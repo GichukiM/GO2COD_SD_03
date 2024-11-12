@@ -5,14 +5,22 @@ import require from 'fluid-tailwind';
 export default {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
-    extract,  // This is how you integrate the Fluid Tailwind classes
+    extract, // Use spread syntax to include Fluid Tailwind classes properly
   ],
   theme: {
-    screens,  // Fluid's responsive screens
-    fontSize, // Fluid's font sizes
-    extend: {},
+    screens,   // Fluid's responsive screens
+    fontSize,  // Fluid's font sizes
+    extend: {
+      fontFamily: {
+        sans: ['Montserrat', 'sans-serif'], // Use Montserrat as the default sans-serif font
+      },
+      fontSize: {
+        'xl': ['1.5rem', '2rem'], // Example: Customize font size
+        '2xl': ['2rem', '2.5rem'],
+      },
+    },
   },
   plugins: [
-    require('fluid-tailwind'), // This adds Fluid classes to Tailwind
+    require('fluid-tailwind'), // Correct plugin registration
   ],
-}
+};
